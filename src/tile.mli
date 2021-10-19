@@ -14,9 +14,16 @@ type value = int
 (** the type of tile's pattern values*)
 
 val pattern : t -> pattern
+(** [pattern] is the pattern of the tile [tile]*)
+
 val tile_id : t -> tile_id
+(** [tile_id] is the tile id of the tile [tile]*)
+
 val category : t -> category
+(** [category] is the category of the pattern of the tile [tile]*)
+
 val value : t -> value
+(** [value] is the value of the pattern of the tile [tile]*)
 
 val same_category: t -> t -> bool
 (** [same_category] is whether the tiles [tile1] and [tile] have the same category*)
