@@ -1,0 +1,6 @@
+(** @canonical Dune__exe.Test *)
+module Test = Dune__exe__Test
+
+
+(** @canonical Dune__exe.Tile *)
+module Tile = Dune__exe__Tile
