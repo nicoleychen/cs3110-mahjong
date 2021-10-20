@@ -18,4 +18,3 @@ if [s] is empty*)
 val size : 'a list -> int 
 (** [size s] gives you the number of elements in [s] otherwise 
 it returns 0 if [s] is empty*)
-
