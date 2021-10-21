@@ -21,7 +21,7 @@ let add_tile player tile = {
     score = player.score
   }
 
-let is_banker player = player.banker
+let is_banker player = player.banker 
 
-let get_tiles player = player.tiles
+let get_tiles player = player.tiles 
 

@@ -1,4 +1,6 @@
-type 'a t = tile.t list 
+open Tile 
+
+type 'a t = Tile.t list 
 
 exception Empty 
 
