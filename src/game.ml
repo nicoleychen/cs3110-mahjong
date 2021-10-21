@@ -1,14 +1,15 @@
 open Player 
 open Tile 
 open TileStack 
-open Random 
+open Random
+open List  
 
 type t = {
-    banker : Player.t  
-    center_tiles : TileStack.t 
-    open_tiles : TileStack.t
-    discarded_tiles : List 
-    players : Player.t list   
+    banker : Player.t;  
+    center_tiles : TileStack.t; 
+    open_tiles : TileStack.t;
+    discarded_tiles : List; 
+    players : Player.t list;   
 }
 
 
