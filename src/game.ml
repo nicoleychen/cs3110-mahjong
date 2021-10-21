@@ -1,12 +1,12 @@
-import player 
-import tile 
-import tileStack 
+open Player 
+open Tile 
+open TileStack 
 
 
 type t = {
-    banker : player.t  
-    Center_Tiles : tileStack 
-    Open_Tiles : tileStack
+    banker : Player.t  
+    Center_Tiles : TileStack 
+    Open_Tiles : TileStack
     Discard_Tile : List 
-    Players : player.t list   
+    Players : Player.t list   
 }

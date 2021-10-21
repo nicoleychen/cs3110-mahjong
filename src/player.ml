@@ -1,3 +1,5 @@
+open Tile  
+
 type t = {
   id : int;
   banker : bool;
