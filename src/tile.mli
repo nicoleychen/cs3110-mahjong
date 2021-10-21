@@ -36,3 +36,6 @@ val same_pattern: t -> t -> bool
 
 val is_flower: t -> bool
 (** [is_flower] is whether the tile [tile] has the category of Flowers*)
+
+val print_tile: t -> unit
+(** [print_tile] prints the pattern of the [tile] in string*)

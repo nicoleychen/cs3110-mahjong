@@ -53,3 +53,5 @@ let same_value tile1 tile2 = (value tile1) = (value tile2)
 let same_pattern tile1 tile2 = if same_category tile1 tile2 then same_value tile1 tile2 else false
 
 let is_flower tile = (category tile = "flowers")
+
+let print_tile tile = print_endline (category tile ^ value tile)
