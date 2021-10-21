@@ -23,6 +23,6 @@ let assign_tiles player center = {
  
 let rec filter tilelst = function
 | [] -> []
-| h :: t -> if is_flower tile = false then h :: is_flower t else is_flower t
+| h :: t -> if is_flower h = false then h :: is_flower t else is_flower t
  
 let check_bankertile player tile = if player.is_banker && tiles.length <= 12 then add_tile player tile
