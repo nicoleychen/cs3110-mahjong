@@ -10,6 +10,7 @@ type t = {
     Players : Player.t list   
 }
 
+
 let rec assign_banker players n = {
   match players with
   | h::t -> if h.id == n then h.id == True else assign_banker t n
