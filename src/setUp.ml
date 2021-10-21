@@ -12,9 +12,10 @@ let return_tile (i:int) : Tile.t =
   |125 .. 136 -> Dragons ((i-124)/4 +1)
   |137 .. 140 -> Flowers (i-136)
   |141 .. 144 -> Seasons (i-140)
-let init_tiles = TileStack.empty in
-for i = 143 downto 0 do 
-  init_tiles.push return_tile i
+
+(** n should be 143 *)
+let rec init_tiles (n:int) : TileStack =
+  if (n>=0) then return_tile i |> (init_tiles n-1).push else TileStack.empty
 done;
 
 let rec print_init_tiles tiles = 
