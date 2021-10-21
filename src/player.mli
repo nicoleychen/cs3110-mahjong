@@ -1,7 +1,10 @@
 type t
 (** The abstract type of values representing a player *)
 
-val init_player : t -> t
+val init_banker: t 
+(**The default state of a the banker*)
+
+val init_nonbanker_player : t -> t
 (** [init_player] is the default state of a new player *) 
 
 val add_tile : t -> Tile.t -> t
