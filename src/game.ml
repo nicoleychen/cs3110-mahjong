@@ -1,6 +1,6 @@
-open Player 
-open Tile 
-open TileStack 
+open player 
+open tile 
+open tileStack 
 
 type t = {
     banker : Player.t  

@@ -1,8 +1,8 @@
 type 'a t 
-(**abstract data type to represent a stack made fo tiles*)
+(** abstract data type to represent a stack made of tiles*)
 
 val empty : 'a list 
-(**empty is the empty stack*)
+(** empty is the empty stack*)
 
 val push : 'a -> 'a list -> 'a list 
 (** [push x s] is [s] with [x] pushed on top*)
