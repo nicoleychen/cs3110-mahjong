@@ -1,11 +1,16 @@
+open TileStack
+open Tile 
+
 type t = {
-  id : int;
+  id : string;
   banker : bool;
-  tiles : Tile.t list;
+  tiles : TileStack;
   score : int;
 }
 
-let init_player p_id = {
+type banker = player(id = "Player 1"; banker = true ; tiles = TileStack.t; score = 0)
+
+let init_nonbanker_players p_id = {
   id = p_id
   banker = false
   tiles = []
