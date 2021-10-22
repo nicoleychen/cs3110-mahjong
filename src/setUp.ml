@@ -16,7 +16,6 @@ let return_tile (i:int) : Tile.t =
 (** n should be 143 *)
 let rec init_tiles (n:int) : TileStack =
   if (n>=0) then return_tile i |> (init_tiles n-1).push else TileStack.empty
-done;
 
 let rec print_init_tiles tiles = 
   match tiles with
