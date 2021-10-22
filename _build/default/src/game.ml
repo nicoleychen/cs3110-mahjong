@@ -8,7 +8,7 @@ type t = {
     banker : Player.t;  
     center_tiles : TileStack.t; 
     open_tiles : TileStack.t;
-    discarded_tiles : List; 
+    discarded_tiles : TileStack.t; 
     players : Player.t list;   
 }
 
