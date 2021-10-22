@@ -1,0 +1,22 @@
+(** @canonical Demo.Authors *)
+module Authors = Demo__Authors
+
+
+(** @canonical Demo.Game *)
+module Game = Demo__Game
+
+
+(** @canonical Demo.Player *)
+module Player = Demo__Player
+
+
+(** @canonical Demo.SetUp *)
+module SetUp = Demo__SetUp
+
+
+(** @canonical Demo.Tile *)
+module Tile = Demo__Tile
+
+
+(** @canonical Demo.TileStack *)
+module TileStack = Demo__TileStack
