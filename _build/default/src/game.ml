@@ -3,7 +3,7 @@ open Tile
 open TileStack 
 open Random
 open List  
-
+(* 
 type t = {
     banker : Player.t;  
     center_tiles : TileStack.t; 
@@ -12,6 +12,8 @@ type t = {
     players : Player.t list;   
 }
 
+
+(* WE NEED TO FIX THIS*)
 let rec assign_banker players n = {
   match players with
   | h::t -> if h.id == n then h.id == True else assign_banker t n
@@ -33,4 +35,4 @@ let shuffle_tiles tile_stack =
   assert TileStack.is_empty = false 
   let assign_random_tags = List.map (fun c -> (Random.bits(), c)) tile_stack in 
   let sorted = List.sort compare nd in 
-  List.map assign_random_tags sorted 
+  List.map assign_random_tags sorted  *)

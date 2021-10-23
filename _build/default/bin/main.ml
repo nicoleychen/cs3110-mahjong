@@ -1,10 +1,11 @@
-(* open Tile
+open Tile
 open TileStack
 open Player
-open Game *)
+open Game
 
 (* assign tiles *)
 
 (* let player_list 
 
 let playerone.tiles = filter playerone.tiles *)
+let () = print_endline "hi"

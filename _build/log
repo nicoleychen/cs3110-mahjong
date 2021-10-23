@@ -1,10 +1,10 @@
 # dune build
 # OCAMLPARAM: unset
 # Workspace root: /home/juliejeong/cs3110/project/cs3110-mahjong
-$ /usr/bin/nproc > /tmp/dune2cfbe8.output 2> /dev/null
+$ /usr/bin/nproc > /tmp/dune60ae13.output 2> /dev/null
 # Auto-detected concurrency: 12
 # disable binary cache
-$ /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dune9ee9c7.output
+$ /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dunec70667.output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -116,3 +116,55 @@ $ /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dune9ee9c7.
 #      ; windows_unicode = false
 #      }
 #  }
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -impl src/game.ml) > _build/default/src/.demo.objs/game.ml.d
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -impl src/player.ml) > _build/default/src/.demo.objs/player.ml.d
+> File "src/player.ml", line 7, characters 19-20:
+> 7 |   tiles : TileStack;
+>                        ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -impl src/setUp.ml) > _build/default/src/.demo.objs/setUp.ml.d
+> File "src/setUp.ml", line 17, characters 39-40:
+> 17 | let rec init_tiles (n:int) : TileStack =
+>                                             ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.demo.objs/byte -no-alias-deps -opaque -open Demo -o src/.demo.objs/byte/demo__SetUp.cmi -c -intf src/setUp.mli)
+> File "src/setUp.mli", line 1, characters 23-34:
+> 1 | val init_tiles: int -> TileStack.t
+>                            ^^^^^^^^^^^
+> Error: The type constructor TileStack.t expects 1 argument(s),
+>        but is here applied to 0 argument(s)
+[2]
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.demo.objs/byte -I src/.demo.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/native/demo__Tile.cmx -c -impl src/tile.ml)
+> File "src/tile.ml", line 57, characters 53-63:
+> 57 | let print_tile tile = print_endline (category tile ^ value tile)
+>                                                           ^^^^^^^^^^
+> Error: This expression has type value but an expression was expected of type
+>          category
+[2]
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.demo.objs/byte -I src/.demo.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/native/demo__Game.cmx -c -impl src/game.ml)
+> File "src/game.ml", line 1:
+> Error: The implementation src/game.ml
+>        does not match the interface src/.demo.objs/byte/demo__Game.cmi:
+>        The value `check_bankertile' is required but not provided
+>        File "src/game.mli", line 14, characters 0-38: Expected declaration
+>        The value `filter' is required but not provided
+>        File "src/game.mli", line 11, characters 0-42: Expected declaration
+>        The value `assign_banker' is required but not provided
+>        File "src/game.mli", line 8, characters 0-42: Expected declaration
+>        The value `shuffle_tiles' is required but not provided
+>        File "src/game.mli", line 5, characters 0-38: Expected declaration
+>        The type `t' is required but not provided
+>        File "src/game.mli", line 1, characters 0-6: Expected declaration
+[2]
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.demo.objs/byte -I src/.demo.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/native/demo__TileStack.cmx -c -impl src/tileStack.ml)
+> File "src/tileStack.ml", line 1, characters 0-9:
+> 1 | open Tile 
+>     ^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Demo.Tile.
+> File "src/tileStack.ml", line 9, characters 4-12:
+> 9 | let is_empty = function [] -> true | _ -> false 
+>         ^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value is_empty.
+[2]
