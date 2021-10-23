@@ -1,4 +1,4 @@
-(*Reference: https://www.ymimports.com/pages/how-to-play-american-mahjong*)
+(* Reference: https://www.ymimports.com/pages/how-to-play-american-mahjong *)
 
 (*
 Winds: 1=East, 2=South, 3=West, 4=North
@@ -54,4 +54,4 @@ let same_pattern tile1 tile2 = if same_category tile1 tile2 then same_value tile
 
 let is_flower tile = (category tile = "flowers")
 
-let print_tile tile = print_endline (category tile ^ value tile)
+let print_tile tile = print_endline (category tile ^ " " ^ string_of_int (value tile))
