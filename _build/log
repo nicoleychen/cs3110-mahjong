@@ -1,10 +1,10 @@
 # dune build
 # OCAMLPARAM: unset
 # Workspace root: /home/juliejeong/cs3110/project/cs3110-mahjong
-$ /usr/bin/nproc > /tmp/dune60ae13.output 2> /dev/null
+$ /usr/bin/nproc > /tmp/dunecf1e88.output 2> /dev/null
 # Auto-detected concurrency: 12
 # disable binary cache
-$ /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dunec70667.output
+$ /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dune10a71b.output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -116,47 +116,119 @@ $ /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dunec70667.
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -impl src/game.ml) > _build/default/src/.demo.objs/game.ml.d
-$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -impl src/player.ml) > _build/default/src/.demo.objs/player.ml.d
-> File "src/player.ml", line 7, characters 19-20:
-> 7 |   tiles : TileStack;
->                        ^
-> Error: Syntax error
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -intf src/tileStack.mli) > _build/default/src/.demo.objs/tileStack.mli.d
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -impl src/tileStack.ml) > _build/default/src/.demo.objs/tileStack.ml.d
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.demo.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/byte/demo__Tile.cmo -c -impl src/tile.ml)
+> File "src/tile.ml", line 13, characters 0-13:
+> 13 | | Dots of int
+>      ^^^^^^^^^^^^^
+> Error (warning 37 [unused-constructor]): constructor Dots is never used to build values.
+> (However, this constructor appears in patterns.)
+> File "src/tile.ml", line 14, characters 0-16:
+> 14 | | Bamboos of int
+>      ^^^^^^^^^^^^^^^^
+> Error (warning 37 [unused-constructor]): constructor Bamboos is never used to build values.
+> (However, this constructor appears in patterns.)
+> File "src/tile.ml", line 15, characters 0-19:
+> 15 | | Characters of int
+>      ^^^^^^^^^^^^^^^^^^^
+> Error (warning 37 [unused-constructor]): constructor Characters is never used to build values.
+> (However, this constructor appears in patterns.)
+> File "src/tile.ml", line 16, characters 0-14:
+> 16 | | Winds of int
+>      ^^^^^^^^^^^^^^
+> Error (warning 37 [unused-constructor]): constructor Winds is never used to build values.
+> (However, this constructor appears in patterns.)
+> File "src/tile.ml", line 17, characters 0-16:
+> 17 | | Dragons of int
+>      ^^^^^^^^^^^^^^^^
+> Error (warning 37 [unused-constructor]): constructor Dragons is never used to build values.
+> (However, this constructor appears in patterns.)
+> File "src/tile.ml", line 18, characters 0-16:
+> 18 | | Flowers of int
+>      ^^^^^^^^^^^^^^^^
+> Error (warning 37 [unused-constructor]): constructor Flowers is never used to build values.
+> (However, this constructor appears in patterns.)
+> File "src/tile.ml", line 19, characters 0-16:
+> 19 | | Seasons of int
+>      ^^^^^^^^^^^^^^^^
+> Error (warning 37 [unused-constructor]): constructor Seasons is never used to build values.
+> (However, this constructor appears in patterns.)
 [2]
-$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -impl src/setUp.ml) > _build/default/src/.demo.objs/setUp.ml.d
-> File "src/setUp.ml", line 17, characters 39-40:
-> 17 | let rec init_tiles (n:int) : TileStack =
->                                             ^
-> Error: Syntax error
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.demo.objs/byte -no-alias-deps -opaque -open Demo -o src/.demo.objs/byte/demo__TileStack.cmi -c -intf src/tileStack.mli)
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.demo.objs/byte -I src/.demo.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/native/demo__Tile.cmx -c -impl src/tile.ml)
+> File "src/tile.ml", line 13, characters 0-13:
+> 13 | | Dots of int
+>      ^^^^^^^^^^^^^
+> Error (warning 37 [unused-constructor]): constructor Dots is never used to build values.
+> (However, this constructor appears in patterns.)
+> File "src/tile.ml", line 14, characters 0-16:
+> 14 | | Bamboos of int
+>      ^^^^^^^^^^^^^^^^
+> Error (warning 37 [unused-constructor]): constructor Bamboos is never used to build values.
+> (However, this constructor appears in patterns.)
+> File "src/tile.ml", line 15, characters 0-19:
+> 15 | | Characters of int
+>      ^^^^^^^^^^^^^^^^^^^
+> Error (warning 37 [unused-constructor]): constructor Characters is never used to build values.
+> (However, this constructor appears in patterns.)
+> File "src/tile.ml", line 16, characters 0-14:
+> 16 | | Winds of int
+>      ^^^^^^^^^^^^^^
+> Error (warning 37 [unused-constructor]): constructor Winds is never used to build values.
+> (However, this constructor appears in patterns.)
+> File "src/tile.ml", line 17, characters 0-16:
+> 17 | | Dragons of int
+>      ^^^^^^^^^^^^^^^^
+> Error (warning 37 [unused-constructor]): constructor Dragons is never used to build values.
+> (However, this constructor appears in patterns.)
+> File "src/tile.ml", line 18, characters 0-16:
+> 18 | | Flowers of int
+>      ^^^^^^^^^^^^^^^^
+> Error (warning 37 [unused-constructor]): constructor Flowers is never used to build values.
+> (However, this constructor appears in patterns.)
+> File "src/tile.ml", line 19, characters 0-16:
+> 19 | | Seasons of int
+>      ^^^^^^^^^^^^^^^^
+> Error (warning 37 [unused-constructor]): constructor Seasons is never used to build values.
+> (However, this constructor appears in patterns.)
+[2]
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.demo.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/byte/demo__TileStack.cmo -c -impl src/tileStack.ml)
+> File "src/tileStack.ml", line 1, characters 0-9:
+> 1 | open Tile 
+>     ^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Demo.Tile.
+> File "src/tileStack.ml", line 9, characters 4-12:
+> 9 | let is_empty = function [] -> true | _ -> false 
+>         ^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value is_empty.
 [2]
 $ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.demo.objs/byte -no-alias-deps -opaque -open Demo -o src/.demo.objs/byte/demo__SetUp.cmi -c -intf src/setUp.mli)
-> File "src/setUp.mli", line 1, characters 23-34:
-> 1 | val init_tiles: int -> TileStack.t
->                            ^^^^^^^^^^^
-> Error: The type constructor TileStack.t expects 1 argument(s),
->        but is here applied to 0 argument(s)
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.demo.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/byte/demo__Player.cmo -c -impl src/player.ml)
+> File "src/player.ml", line 22, characters 2-7:
+> 22 |   tiles = TileStack.empty
+>        ^^^^^
+> Error: Unbound value tiles
 [2]
-$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.demo.objs/byte -I src/.demo.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/native/demo__Tile.cmx -c -impl src/tile.ml)
-> File "src/tile.ml", line 57, characters 53-63:
-> 57 | let print_tile tile = print_endline (category tile ^ value tile)
->                                                           ^^^^^^^^^^
-> Error: This expression has type value but an expression was expected of type
->          category
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.demo.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/byte/demo__Game.cmo -c -impl src/game.ml)
+> File "src/game.ml", line 1, characters 0-11:
+> 1 | open Player 
+>     ^^^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Demo.Player.
+> File "src/game.ml", line 3, characters 0-14:
+> 3 | open TileStack 
+>     ^^^^^^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Demo.TileStack.
+> File "src/game.ml", line 4, characters 0-11:
+> 4 | open Random
+>     ^^^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Stdlib.Random.
 [2]
-$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.demo.objs/byte -I src/.demo.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/native/demo__Game.cmx -c -impl src/game.ml)
-> File "src/game.ml", line 1:
-> Error: The implementation src/game.ml
->        does not match the interface src/.demo.objs/byte/demo__Game.cmi:
->        The value `check_bankertile' is required but not provided
->        File "src/game.mli", line 14, characters 0-38: Expected declaration
->        The value `filter' is required but not provided
->        File "src/game.mli", line 11, characters 0-42: Expected declaration
->        The value `assign_banker' is required but not provided
->        File "src/game.mli", line 8, characters 0-42: Expected declaration
->        The value `shuffle_tiles' is required but not provided
->        File "src/game.mli", line 5, characters 0-38: Expected declaration
->        The type `t' is required but not provided
->        File "src/game.mli", line 1, characters 0-6: Expected declaration
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.demo.objs/byte -I src/.demo.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/native/demo__Player.cmx -c -impl src/player.ml)
+> File "src/player.ml", line 22, characters 2-7:
+> 22 |   tiles = TileStack.empty
+>        ^^^^^
+> Error: Unbound value tiles
 [2]
 $ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.demo.objs/byte -I src/.demo.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/native/demo__TileStack.cmx -c -impl src/tileStack.ml)
 > File "src/tileStack.ml", line 1, characters 0-9:
@@ -167,4 +239,30 @@ $ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlopt.opt -w
 > 9 | let is_empty = function [] -> true | _ -> false 
 >         ^^^^^^^^
 > Error (warning 32 [unused-value-declaration]): unused value is_empty.
+[2]
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.demo.objs/byte -I src/.demo.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/native/demo__Game.cmx -c -impl src/game.ml)
+> File "src/game.ml", line 1, characters 0-11:
+> 1 | open Player 
+>     ^^^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Demo.Player.
+> File "src/game.ml", line 3, characters 0-14:
+> 3 | open TileStack 
+>     ^^^^^^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Demo.TileStack.
+> File "src/game.ml", line 4, characters 0-11:
+> 4 | open Random
+>     ^^^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Stdlib.Random.
+[2]
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.demo.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/byte/demo__SetUp.cmo -c -impl src/setUp.ml)
+> File "src/setUp.ml", line 8, characters 31-35:
+> 8 |   | i when i >= 0 && i <=35 -> Dots ((i / 4) + 1)
+>                                    ^^^^
+> Error: Unbound constructor Dots
+[2]
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.demo.objs/byte -I src/.demo.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/native/demo__SetUp.cmx -c -impl src/setUp.ml)
+> File "src/setUp.ml", line 8, characters 31-35:
+> 8 |   | i when i >= 0 && i <=35 -> Dots ((i / 4) + 1)
+>                                    ^^^^
+> Error: Unbound constructor Dots
 [2]

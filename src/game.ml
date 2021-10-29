@@ -12,22 +12,26 @@ type t = {
     players : Player.t list;   
 }
 
-(* WE NEED TO FIX THIS*)
+(* WE NEED TO FIX THIS
 let rec assign_banker players n = {
   match players with
   | h::t -> if h.id == n then h.id == True else assign_banker t n
 }
- 
+*)
+
+(*
 let assign_tiles player center = {
   let lst = [] in
   match player with
   | h::t
 }
+*)
  
-let rec filter tilelst = function
+let rec filter = function
 | [] -> []
-| h :: t -> if is_flower h = false then h :: is_flower t else is_flower t
+| h :: t -> if is_flower h then filter t else h :: filter t 
  
+(*
 let check_bankertile player tile = if player.is_banker && tiles.length <= 12 then add_tile player tile
 
 let shuffle_tiles tile_stack = 
@@ -35,3 +39,4 @@ let shuffle_tiles tile_stack =
   let assign_random_tags = List.map (fun c -> (Random.bits(), c)) tile_stack in 
   let sorted = List.sort compare nd in 
   List.map assign_random_tags sorted 
+*)

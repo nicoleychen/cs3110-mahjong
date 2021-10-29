@@ -1,6 +1,6 @@
 open Tile 
 
-type 'a t = Tile.t list 
+type t = Tile.t list 
 
 exception Empty 
 

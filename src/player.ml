@@ -4,7 +4,7 @@ open Tile
 type t = {
   id : int;
   (* banker : bool; *)
-  tiles : TileStack;
+  tiles : TileStack.t;
   score : int;
 }
 (* 
@@ -18,15 +18,15 @@ let init_nonbanker_players p_id = {
 } *)
 
 let init_player p_id = {
-  id = p_id
-  tiles = TileStack.empty
+  id = p_id;
+  tiles = TileStack.empty;
   score = 0
 }
 
 let add_tile player tile = {
-    id = player.id
+    id = player.id;
     (* banker = player.is_banker *)
-    tiles = tile :: player.tiles
+    tiles = tile :: player.tiles;
     score = player.score
   }
 

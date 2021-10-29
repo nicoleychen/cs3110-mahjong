@@ -4,7 +4,7 @@ open Tile
 type t = {
   id : int;
   (* banker : bool; *)
-  tiles : TileStack;
+  tiles : TileStack.t;
   score : int;
 }
 (* 
