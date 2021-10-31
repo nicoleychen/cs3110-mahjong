@@ -24,8 +24,9 @@ let rec init_tiles (n:int) : TileStack.t =
   if (n>=0) then return_tile i |> (init_tiles n-1).push else TileStack.empty
 *)
 
+(*
 let rec print_init_tiles tiles = 
   match tiles with
   | [] -> print_endline "DONE"
   | h :: t -> Tile.print_tile h ^ print_init_tiles t
-
+*)

@@ -5,19 +5,18 @@ open Random
 open List  
 
 type t = {
-    banker : Player.t;  
+    banker : int;  
     center_tiles : TileStack.t; 
     open_tiles : TileStack.t;
     discarded_tiles : TileStack.t; 
     players : Player.t list;   
 }
 
-(* WE NEED TO FIX THIS
 let rec assign_banker players n = {
   match players with
   | h::t -> if h.id == n then h.id == True else assign_banker t n
 }
-*)
+
 
 (*
 let assign_tiles player center = {

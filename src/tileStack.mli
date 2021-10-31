@@ -1,10 +1,10 @@
 type t 
 (** abstract data type to represent a stack made of tiles*)
 
-val empty : Tile.t list 
+val empty : t 
 (** empty is the empty stack*)
 
-val push : Tile.t -> Tile.t list -> Tile.t list 
+val push : Tile.t -> t -> t
 (** [push x s] is [s] with [x] pushed on top*)
 
 val peek : Tile.t list -> Tile.t
