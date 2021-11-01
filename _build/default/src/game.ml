@@ -12,6 +12,12 @@ type t = {
 }
 
 (*need functions to initialize a game - assinging a banker, generating 144 tiles & putting thme into center_tiles & initiating players*)
+let init_game (banker: int)= {
+  banker = banker;
+  center_tiles = ;
+  discarded_tiles = TileStack.empty;
+  players: ;
+}
  
 let rec filter = function
 | [] -> []
