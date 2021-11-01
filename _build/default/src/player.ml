@@ -3,7 +3,6 @@ open Tile
 
 type t = {
   id : int;
-  (* banker : bool; *)
   tiles : TileStack.t;
   score : int;
 }
@@ -16,7 +15,6 @@ let init_player p_id = {
 
 let add_tile (player : t) (tile : Tile.t) : t = {
     id = player.id;
-    (* banker = player.is_banker *)
     tiles = TileStack.push tile player.tiles;
     score = player.score
 }

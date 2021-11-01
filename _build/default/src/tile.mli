@@ -11,7 +11,10 @@ type category = string
 (** the type of tile's pattern categories*)
 
 type value = int
-(** the type of tile's pattern values*)
+(** the type of tile's pattern values
+Winds: 1=East, 2=South, 3=West, 4=North
+Dragons: 1=White, 2=Green, 3=Red
+Seasons: 1=Spring, 2=Summer, 3=Autumn, 4=Winter*)
 
 val pattern : t -> pattern
 (** [pattern] is the pattern of the tile [tile]*)
@@ -37,9 +40,17 @@ val same_pattern: t -> t -> bool
 val is_flower: t -> bool
 (** [is_flower] is whether the tile [tile] has the category of Flowers*)
 
-(* ADD SPECIFICATIONS FOR THE NEWLY ADDED FUNCTIONS *)
+val tile_to_string: t -> string
+(** [tile_to_string] is a string that contains the id and the pattern of [tile]*)
+
+val tiles_to_string: t list -> string
+(** [tiles_to_string] is a string that cotains a list of ids and patterns of [tiles]*)
+
 val print_tile: t -> unit
-(** [print_tile] prints the pattern of the [tile] in string*)
+(** [print_tile] prints the id and the pattern of [tile]*)
+
+val print_tiles: t list -> unit
+(** [print_tiles] prints a list of ids and patterns of [tiles]*)
 
 val return_pattern: tile_id -> pattern
 

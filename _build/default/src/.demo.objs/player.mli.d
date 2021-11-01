@@ -1,1 +1,1 @@
-src/player.mli: Tile
+src/player.mli: Tile TileStack

@@ -1,1 +1,1 @@
-src/setUp.mli: TileStack
+src/setUp.mli:
