@@ -6,6 +6,3 @@ val shuffle_tiles : 'a list -> 'a list
 
 val filter : Tile.t list -> Tile.t list
 (** [filter] returns a list of player's tiles with the flower tiles discarded *)
-
-val check_bankertile: t -> Tile.t -> t
-(** [check_bankertile] adds a tile to the player's list of tiles if player is banker and does not have the required amount of tiles *)

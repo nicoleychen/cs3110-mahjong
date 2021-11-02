@@ -4,6 +4,8 @@ type t
 val init_player : int -> t
 (** [init_player] is the default state of a new player *) 
 
+val player_id: t -> int
+
 val add_tile : t -> Tile.t -> t
 (** [add_tile] is the new state of [player] after adding [tile] to their list of tiles *)
 

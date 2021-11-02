@@ -13,6 +13,8 @@ let init_player p_id = {
   score = 0
 }
 
+let player_id (player: t) : int = player.id
+
 let add_tile (player : t) (tile : Tile.t) : t = {
     id = player.id;
     tiles = TileStack.push tile player.tiles;
