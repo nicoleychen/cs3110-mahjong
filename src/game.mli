@@ -44,7 +44,7 @@ val pick_tile: t -> Player.t -> Tile.t -> t
 val steal_tile: t -> Player.t -> Tile.t -> t 
 (** [steal_tile] removes a tile from the discarded pile and adds it to the players tiles*)
 
-val discard_tile: Player.t -> Tile.t -> 'a 
+val discard_tile: t -> Player.t -> Tile.t -> t
 (** [discard_tile] removes a tile from the players tiles and adds it to the discarded tiles*)
 
 (*
