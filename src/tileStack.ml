@@ -20,3 +20,7 @@ let size = List.length
 let rec remove tile = function
 | [] -> []
 | h :: t -> if (h = tile) then remove tile t else h :: remove tile t 
+
+let rec tileStack_to_string = function 
+| [] -> ""
+| h::t -> Tile.tile_to_string h ^ tileStack_to_string t

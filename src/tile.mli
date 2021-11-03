@@ -2,12 +2,12 @@ type t
 (** the abstract type of values representing tiles*)
 
 type pattern
-(** the abstract type of values representig patterns of tiles*)
+(** the abstract type of values representing patterns of tiles*)
 
 type tile_id = int
 (** the type of tile identifiers*)
 
-type category = string
+type suit = string
 (** the type of tile's pattern categories*)
 
 type value = int
@@ -22,23 +22,29 @@ val pattern : t -> pattern
 val tile_id : t -> tile_id
 (** [tile_id] is the tile id of the tile [tile]*)
 
-val category : t -> category
-(** [category] is the category of the pattern of the tile [tile]*)
+val suit : t -> suit
+(** [suit] is the suit of the pattern of the tile [tile]*)
 
 val value : t -> value
 (** [value] is the value of the pattern of the tile [tile]*)
 
-val same_category: t -> t -> bool
-(** [same_category] is whether the tiles [tile1] and [tile] have the same category*)
+val same_suit: t -> t -> bool
+(** [same_suit] is whether the tiles [tile1] and [tile2] have the same suit*)
+
+val same_suit_triple: t -> t -> t -> bool
+(** [same_suit] is whether the tiles [tile1] and [tile2] and [tile3] have the same suit*)
 
 val same_value: t -> t -> bool
-(** [same_pattern] is whether the tiles [tile1] and [tile] have the same value*)
+(** [same_pattern] is whether the tiles [tile1] and [tile2] have the same value*)
 
 val same_pattern: t -> t -> bool
-(** [same_pattern] is whether the tiles [tile1] and [tile] have the same pattern (category and value)*)
+(** [same_pattern] is whether the tiles [tile1] and [tile2] have the same pattern (suit and value)*)
+
+val same_consecutive: t -> t -> bool
+(** [same_consecutive] is whether the tiles [tile1] and [tile2] are consecutive or not*)
 
 val is_flower: t -> bool
-(** [is_flower] is whether the tile [tile] has the category of Flowers*)
+(** [is_flower] is whether the tile [tile] has the suit of Flowers*)
 
 val tile_to_string: t -> string
 (** [tile_to_string] is a string that contains the id and the pattern of [tile]*)

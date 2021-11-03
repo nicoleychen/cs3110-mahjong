@@ -11,6 +11,11 @@ type t = {
     players : Player.t list;   
 }
 
+let print_game (game: t) = print_endline (">> Center Tiles: ");
+ print_string (TileStack.tileStack_to_string game.center_tiles);
+ print_string ">> Discarded Tiles: ";
+ print_string (TileStack.tileStack_to_string game.discarded_tiles)
+
 let rec init_tiles (n: int) : TileStack.t = if (n > 0) then TileStack.push (Tile.return_tile n) (init_tiles (n-1)) else TileStack.empty 
 
 let rec init_players (n: int) : Player.t list = if (n <= 4) then (Player.init_player n) :: init_players (n+1) else []
@@ -20,7 +25,7 @@ let init_game (banker_id: int)= {
   banker = banker_id;
   center_tiles = init_tiles 144;
   discarded_tiles = TileStack.empty;
-  players = init_players 0
+  players = init_players 1
 }
 
 let rec assign_n_tiles (tiles : TileStack.t) (player : Player.t) (n: int): Player.t = 
@@ -46,6 +51,8 @@ let game_after_init_tile_deals (game : t) : t = {
   discarded_tiles = game.discarded_tiles;
   players = assign_tiles_to_players game.center_tiles game.players game.banker
 }
+
+let set_up_game (banker_id: int) : t = init_game banker_id |> game_after_init_tile_deals
 
 let rec filter_flower = function
 | [] -> []
@@ -89,6 +96,19 @@ let discard_tile (game : t) (player:Player.t) (tile: Tile.t) :t ={
   players = new_players game.players player tile Player.remove_tile; 
 }
 
+(* let check_win (game : t) (player:Player) (tile: Tile.t) :t = {
+
+} *)
+
+(*
+let check_identical (tile1: Tile.t) (tile2: Tile.t) (tile3: Tile.t) : bool = {
+  if Tile.same_pattern tile1 tile2 then Tile.same_pattern tile1 tile3 && Tile.same_pattern tile2 tile3 else false
+}
+*)
+
+(* let check_consecutive (tile1: Tile.t) (tile2: Tile.t) (tile3: Tile.t) : bool = {
+  if Tile.same_suit_triple tile1 tile2 tile3 
+} *)
 
 
 >>>>>>> ab70c6a5331eda9b2876d8089f1b917f240c6ce0
