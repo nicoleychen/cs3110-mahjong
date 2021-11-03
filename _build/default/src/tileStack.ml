@@ -1,4 +1,5 @@
 open Tile 
+open List 
 
 type t = Tile.t list 
 
@@ -15,3 +16,4 @@ let peek = function [] -> raise Empty | x :: _ -> x
 let pop = function [] -> raise Empty | _ :: s -> s 
 
 let size = List.length
+
