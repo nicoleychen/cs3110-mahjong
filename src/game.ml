@@ -16,7 +16,7 @@ type t = {
 
 let rec init_tiles (n: int) : TileStack.t = if (n > 0) then TileStack.push (Tile.return_tile n) (init_tiles (n-1)) else TileStack.empty 
 
-let rec init_players (n: int) : Player.t list = if (n<=4) then (Player.init_player n) :: init_players (n+1) else []
+let rec init_players (n: int) : Player.t list = if (n <= 4) then (Player.init_player n) :: init_players (n+1) else []
 
 (*TODO: modification needed -> randomize center tiles using shuffle*)
 let init_game (banker_id: int)= {
@@ -58,6 +58,17 @@ let rec filter = function
 
 let shuffle_tiles tile_stack = 
   (*assert TileStack.is_empty  = false*)
-  let assign_random_tags = List.map (fun c -> (Random.bits(), c)) tile_stack in 
+  let assign_random_tags = List.map(fun c -> (Random.bits(), c)) tile_stack in 
   let sorted = List.sort compare nd in 
   List.map assign_random_tags sorted 
+
+let pick_tile tile = 
+  push player.tiles tile;  
+  remove discared_tiles tile;
+
+let discard_tile tile = 
+  push discarded_tiles tile; 
+  remove player.tiles tile  
+
+
+
