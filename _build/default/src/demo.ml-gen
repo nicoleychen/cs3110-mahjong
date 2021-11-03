@@ -10,10 +10,6 @@ module Game = Demo__Game
 module Player = Demo__Player
 
 
-(** @canonical Demo.SetUp *)
-module SetUp = Demo__SetUp
-
-
 (** @canonical Demo.Tile *)
 module Tile = Demo__Tile
 

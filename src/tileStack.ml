@@ -17,3 +17,6 @@ let pop = function [] -> raise Empty | _ :: s -> s
 
 let size = List.length
 
+let rec remove tile = function
+| [] -> []
+| h :: t -> if (h = tile) then remove tile t else h :: remove tile t 

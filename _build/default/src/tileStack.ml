@@ -1,4 +1,5 @@
 open Tile 
+open List 
 
 type t = Tile.t list 
 
@@ -15,3 +16,7 @@ let peek = function [] -> raise Empty | x :: _ -> x
 let pop = function [] -> raise Empty | _ :: s -> s 
 
 let size = List.length
+
+let rec remove tile = function
+| [] -> []
+| h :: t -> if (h = tile) then remove tile t else h :: remove tile t 

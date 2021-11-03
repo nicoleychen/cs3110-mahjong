@@ -1,10 +1,10 @@
 # dune build
 # OCAMLPARAM: unset
-# Workspace root: /home/juliejeong/cs3110/project/cs3110-mahjong
-$ /usr/bin/nproc > /tmp/dune70c5e1.output 2> /dev/null
+# Workspace root: /home/juliejeong/cs3110/final-project/cs3110-mahjong
+$ /usr/bin/nproc > /tmp/dunee08bf6.output 2> /dev/null
 # Auto-detected concurrency: 12
 # disable binary cache
-$ /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dune569548.output
+$ /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dune50610c.output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -29,15 +29,16 @@ $ /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dune569548.
 #        { "DUNE_OCAML_HARDCODED" : "/home/juliejeong/.opam/cs3110-2021fa/lib"
 #        ; "DUNE_OCAML_STDLIB" :
 #            "/home/juliejeong/.opam/cs3110-2021fa/lib/ocaml"
-#        ; "DUNE_SOURCEROOT" : "/home/juliejeong/cs3110/project/cs3110-mahjong"
+#        ; "DUNE_SOURCEROOT" :
+#            "/home/juliejeong/cs3110/final-project/cs3110-mahjong"
 #        ; "INSIDE_DUNE" :
-#            "/home/juliejeong/cs3110/project/cs3110-mahjong/_build/default"
+#            "/home/juliejeong/cs3110/final-project/cs3110-mahjong/_build/default"
 #        ; "OCAMLFIND_IGNORE_DUPS_IN" :
-#            "/home/juliejeong/cs3110/project/cs3110-mahjong/_build/install/default/lib"
+#            "/home/juliejeong/cs3110/final-project/cs3110-mahjong/_build/install/default/lib"
 #        ; "OCAMLPATH" :
-#            "/home/juliejeong/cs3110/project/cs3110-mahjong/_build/install/default/lib"
+#            "/home/juliejeong/cs3110/final-project/cs3110-mahjong/_build/install/default/lib"
 #        ; "OCAMLTOP_INCLUDE_PATH" :
-#            "/home/juliejeong/cs3110/project/cs3110-mahjong/_build/install/default/lib/toplevel"
+#            "/home/juliejeong/cs3110/final-project/cs3110-mahjong/_build/install/default/lib/toplevel"
 #        ; "OCAML_COLOR" : "always"
 #        ; "OPAMCOLOR" : "always"
 #        }
@@ -116,6 +117,22 @@ $ /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dune569548.
 #      ; windows_unicode = false
 #      }
 #  }
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -intf src/game.mli) > _build/default/src/.demo.objs/game.mli.d
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -intf src/player.mli) > _build/default/src/.demo.objs/player.mli.d
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.demo.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/byte/demo__TileStack.cmo -c -impl src/tileStack.ml)
+> File "src/tileStack.ml", line 1, characters 0-9:
+> 1 | open Tile 
+>     ^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Demo.Tile.
+[2]
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.demo.objs/byte -no-alias-deps -opaque -open Demo -o src/.demo.objs/byte/demo__Player.cmi -c -intf src/player.mli)
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.demo.objs/byte -I src/.demo.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/native/demo__TileStack.cmx -c -impl src/tileStack.ml)
+> File "src/tileStack.ml", line 1, characters 0-9:
+> 1 | open Tile 
+>     ^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Demo.Tile.
+[2]
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.demo.objs/byte -no-alias-deps -opaque -open Demo -o src/.demo.objs/byte/demo__Game.cmi -c -intf src/game.mli)
 $ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.demo.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/byte/demo__Player.cmo -c -impl src/player.ml)
 > File "src/player.ml", line 1, characters 0-14:
 > 1 | open TileStack
@@ -125,69 +142,6 @@ $ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -w @
 > 2 | open Tile 
 >     ^^^^^^^^^
 > Error (warning 33 [unused-open]): unused open Demo.Tile.
-[2]
-$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.demo.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/byte/demo__SetUp.cmo -c -impl src/setUp.ml)
-> File "src/setUp.ml", line 1, characters 0-9:
-> 1 | open Tile
->     ^^^^^^^^^
-> Error (warning 33 [unused-open]): unused open Demo.Tile.
-> File "src/setUp.ml", line 2, characters 0-14:
-> 2 | open TileStack
->     ^^^^^^^^^^^^^^
-> Error (warning 33 [unused-open]): unused open Demo.TileStack.
-> File "src/setUp.ml", line 3, characters 0-11:
-> 3 | open Player
->     ^^^^^^^^^^^
-> Error (warning 33 [unused-open]): unused open Demo.Player.
-> File "src/setUp.ml", line 4, characters 0-9:
-> 4 | open Game
->     ^^^^^^^^^
-> Error (warning 33 [unused-open]): unused open Demo.Game.
-[2]
-$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.demo.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/byte/demo__TileStack.cmo -c -impl src/tileStack.ml)
-> File "src/tileStack.ml", line 1, characters 0-9:
-> 1 | open Tile 
->     ^^^^^^^^^
-> Error (warning 33 [unused-open]): unused open Demo.Tile.
-[2]
-$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -impl src/game.ml) > _build/default/src/.demo.objs/game.ml.d
-$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.demo.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/byte/demo__Game.cmo -c -impl src/game.ml)
-> File "src/game.ml", line 61, characters 25-32:
-> 61 |   let sorted = List.sort compare nd in 
->                               ^^^^^^^
-> Error: This expression has type
->          ('a -> 'a -> int) -> 'a list -> 'a list -> int
->        but an expression was expected of type
->          ('a -> 'a -> int) -> ('a -> 'a -> int) -> int
->        Type 'a list is not compatible with type 'a -> 'a -> int 
-[2]
-$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.demo.objs/byte -I src/.demo.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/native/demo__Game.cmx -c -impl src/game.ml)
-> File "src/game.ml", line 61, characters 25-32:
-> 61 |   let sorted = List.sort compare nd in 
->                               ^^^^^^^
-> Error: This expression has type
->          ('a -> 'a -> int) -> 'a list -> 'a list -> int
->        but an expression was expected of type
->          ('a -> 'a -> int) -> ('a -> 'a -> int) -> int
->        Type 'a list is not compatible with type 'a -> 'a -> int 
-[2]
-$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.demo.objs/byte -I src/.demo.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/native/demo__SetUp.cmx -c -impl src/setUp.ml)
-> File "src/setUp.ml", line 1, characters 0-9:
-> 1 | open Tile
->     ^^^^^^^^^
-> Error (warning 33 [unused-open]): unused open Demo.Tile.
-> File "src/setUp.ml", line 2, characters 0-14:
-> 2 | open TileStack
->     ^^^^^^^^^^^^^^
-> Error (warning 33 [unused-open]): unused open Demo.TileStack.
-> File "src/setUp.ml", line 3, characters 0-11:
-> 3 | open Player
->     ^^^^^^^^^^^
-> Error (warning 33 [unused-open]): unused open Demo.Player.
-> File "src/setUp.ml", line 4, characters 0-9:
-> 4 | open Game
->     ^^^^^^^^^
-> Error (warning 33 [unused-open]): unused open Demo.Game.
 [2]
 $ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.demo.objs/byte -I src/.demo.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/native/demo__Player.cmx -c -impl src/player.ml)
 > File "src/player.ml", line 1, characters 0-14:
@@ -199,9 +153,31 @@ $ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlopt.opt -w
 >     ^^^^^^^^^
 > Error (warning 33 [unused-open]): unused open Demo.Tile.
 [2]
-$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.demo.objs/byte -I src/.demo.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/native/demo__TileStack.cmx -c -impl src/tileStack.ml)
-> File "src/tileStack.ml", line 1, characters 0-9:
-> 1 | open Tile 
->     ^^^^^^^^^
-> Error (warning 33 [unused-open]): unused open Demo.Tile.
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.demo.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/byte/demo__Game.cmo -c -impl src/game.ml)
+> File "src/game.ml", line 1, characters 0-11:
+> 1 | open Player 
+>     ^^^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Demo.Player.
+> File "src/game.ml", line 3, characters 0-14:
+> 3 | open TileStack 
+>     ^^^^^^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Demo.TileStack.
+> File "src/game.ml", line 4, characters 0-11:
+> 4 | open Random
+>     ^^^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Stdlib.Random.
+[2]
+$ (cd _build/default && /home/juliejeong/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.demo.objs/byte -I src/.demo.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Demo -o src/.demo.objs/native/demo__Game.cmx -c -impl src/game.ml)
+> File "src/game.ml", line 1, characters 0-11:
+> 1 | open Player 
+>     ^^^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Demo.Player.
+> File "src/game.ml", line 3, characters 0-14:
+> 3 | open TileStack 
+>     ^^^^^^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Demo.TileStack.
+> File "src/game.ml", line 4, characters 0-11:
+> 4 | open Random
+>     ^^^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Stdlib.Random.
 [2]
