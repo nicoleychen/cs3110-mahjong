@@ -59,8 +59,7 @@ let same_consecutive tile1 tile2 = if same_suit tile1 tile2 then ((value tile1) 
 
 let is_flower tile = (suit tile = "flowers")
 
-let tile_to_string tile = " [" ^ string_of_int (tile_id tile) ^ "] " ^ suit tile ^ " " ^ string_of_int (value tile)
-
+let tile_to_string tile = "[" ^ string_of_int (tile_id tile) ^ "] " ^ suit tile ^ " " ^ string_of_int (value tile) ^ ", "
 let rec tiles_to_string tiles = 
   match tiles with
   | [] -> ""

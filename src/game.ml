@@ -13,7 +13,7 @@ type t = {
 
 let print_game (game: t) = print_endline (">> Center Tiles: ");
  print_string (TileStack.tileStack_to_string game.center_tiles);
- print_string ">> Discarded Tiles: ";
+ print_string "\n>> Discarded Tiles: ";
  print_string (TileStack.tileStack_to_string game.discarded_tiles)
 
 let rec init_tiles (n: int) : TileStack.t = if (n <=144) then TileStack.push (Tile.return_tile n) (init_tiles (n+1)) else TileStack.empty 
