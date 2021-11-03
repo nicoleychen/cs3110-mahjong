@@ -9,7 +9,7 @@ val init_players : int -> Player.t list
 (** [init_players] is a list of [n] players with no tiles distirbuted*
 Requires: n is 4 for the conventional set up*)
 
-val init_game: int -> t
+val init_game: int -> t28
 (** [init_game] is a game with a player with if [banker_id] as the assigned banker, initial tiles as the center tile, empty discardd tiles, and initial players*)
 
 val assign_n_tiles : TileStack.t -> Player.t -> int -> Player.t
@@ -23,6 +23,9 @@ val  assign_tiles_to_players: TileStack.t -> Player.t list -> int -> Player.t li
 
 val game_after_init_tile_deals: t -> t
 (** [game_after_init_tile_deals] is the updated status of [game] where the tiles from the center tiles are distribtued accordingly to players*)
+
+val set_up_game : int -> t
+(** [set_up_game] is the initial set up of the mahjong game*)
 
 (*
 val shuffle_tiles : 'a list -> 'a list 
@@ -44,6 +47,6 @@ val steal_tile: t -> Player.t -> Tile.t -> t
 val discard_tile: Player.t -> Tile.t -> 'a 
 (** [discard_tile] removes a tile from the players tiles and adds it to the discarded tiles*)
 
-(* val check_identical: Tile.t -> Tile.t -> Tile.t -> bool *)
+val check_identical: Tile.t -> Tile.t -> Tile.t -> bool
 (** [check_identical] checks if the set of three tiles is a winning combination of three identical tiles *)
   

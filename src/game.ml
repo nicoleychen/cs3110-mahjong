@@ -47,6 +47,8 @@ let game_after_init_tile_deals (game : t) : t = {
   players = assign_tiles_to_players game.center_tiles game.players game.banker
 }
 
+let set_up_game (banker_id: int) : t = init_game banker_id |> game_after_init_tile_deals
+
 let rec filter_flower = function
 | [] -> []
 | h :: t -> if is_flower h then filter_flower t else h :: filter_flower t 
