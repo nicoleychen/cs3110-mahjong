@@ -52,38 +52,24 @@ let game_after_init_tile_deals (game : t) : t = {
 
 (* --- end of new functions added --- *)
 
-let rec filter = function
+let rec filter_flower = function
 | [] -> []
 | h :: t -> if is_flower h then filter t else h :: filter t 
 
-let shuffle_tiles (tile_stack: TileStack) = 
+let shuffle_tiles (tile_stack: TileStack.t) = 
   assert TileStack.is_empty tile_stack = False 
   let assign_random_tags = List.map(fun c -> (Random.bits(), c)) tile_stack in 
   let sorted = List.sort compare nd in 
   List.map assign_random_tags sorted 
 
-let pick_tile (game : t) (player:Player) (tile: Tile.t): t = {
-  banker = game.banker; 
-  center_tiles = TileStack.pop center_tiles tile;  
-  discarded_tiles = game.discarded_tiles; 
-  players = Player.add_tile player tile; 
-} 
+let pick_tile (player:Player.t) (tile: Tile.t) = 
+  push player.tiles tile; 
+  remove center_tiles tile; 
 
-let steal_tile (game : t) (player:Player) (tile: Tile.t) :t = {
-  banker = game.banker; 
-  center_tiles = game.center_tiles; 
-  discarded_tiles = TileStack.pop discarded_tiles tile;
-  players = Player.add_tile player tile;
-}
+let steal_tile (player: Player.t) (tile : Tile.t) = 
+  push player.tiles tile;  
+  remove discared_tiles tile;
 
-let discard_tile (game : t) (player:Player) (tile: Tile.t) (id: int) :t ={
-  banker = game.banker; 
-  center_tiles = game.center_tiles;
-  discarded_tiles = TileStack.push discarded_tiles tile; 
-  players = Player.remove_tile player id;
-}
-
-(**hi julie*)
-
-
-
+let discard_tile (player: Player.t) (tile : Tile.t) = 
+  push discarded_tiles tile; 
+  remove player.tiles tile;   
