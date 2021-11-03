@@ -87,28 +87,6 @@ let steal_tile (game : t) (player:Player.t) (tile: Tile.t) :t = {
 let discard_tile (game : t) (player:Player.t) (tile: Tile.t) :t ={
   banker = game.banker; 
   center_tiles = game.center_tiles;
-<<<<<<< HEAD
   discarded_tiles = TileStack.push discarded_tiles tile; 
   players = Player.remove_tile player id;
-}  
-=======
-  discarded_tiles = TileStack.push tile game.discarded_tiles; 
-  players = new_players game.players player tile Player.remove_tile; 
 }
-
-(* let check_win (game : t) (player:Player) (tile: Tile.t) :t = {
-
-} *)
-
-(*
-let check_identical (tile1: Tile.t) (tile2: Tile.t) (tile3: Tile.t) : bool = {
-  if Tile.same_pattern tile1 tile2 then Tile.same_pattern tile1 tile3 && Tile.same_pattern tile2 tile3 else false
-}
-*)
-
-(* let check_consecutive (tile1: Tile.t) (tile2: Tile.t) (tile3: Tile.t) : bool = {
-  if Tile.same_suit_triple tile1 tile2 tile3 
-} *)
-
-
->>>>>>> ab70c6a5331eda9b2876d8089f1b917f240c6ce0
