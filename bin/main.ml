@@ -4,7 +4,6 @@ open TileStack
 open Player
 open Game
 
-
 let setup_game = print_endline "Welcome to the game!"; Game.print_game (Game.set_up_game 1)
 
 let main () =

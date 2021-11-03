@@ -59,7 +59,7 @@ let same_consecutive tile1 tile2 = if same_suit tile1 tile2 then ((value tile1) 
 
 let is_flower tile = (suit tile = "flowers")
 
-let tile_to_string tile = "[" ^ string_of_int (tile_id tile) ^ "]" ^ suit tile ^ " " ^ string_of_int (value tile)
+let tile_to_string tile = " [" ^ string_of_int (tile_id tile) ^ "] " ^ suit tile ^ " " ^ string_of_int (value tile)
 
 let rec tiles_to_string tiles = 
   match tiles with
@@ -72,11 +72,11 @@ let print_tiles tiles = print_endline (tiles_to_string tiles)
 
 let return_pattern (i:int) : pattern = 
   match i with
-  | i when i >= 1 && i <=36 -> Dots ((i / 4) + 1)
-  | i when i >= 37 && i <= 72 -> Bamboos ((i-36)/4 + 1)
-  | i when i >= 73 && i <= 108 -> Characters ((i-72)/4 + 1) 
-  | i when i >= 109 && i <= 124 -> Winds ((i-108)/4 +1)
-  | i when i >= 125 && i <= 136 -> Dragons ((i-124)/4 +1)
+  | i when i >= 1 && i <=36 -> Dots ((i-1)/4 + 1)
+  | i when i >= 37 && i <= 72 -> Bamboos ((i-37)/4 + 1)
+  | i when i >= 73 && i <= 108 -> Characters ((i-73)/4 + 1) 
+  | i when i >= 109 && i <= 124 -> Winds ((i-109)/4 +1)
+  | i when i >= 125 && i <= 136 -> Dragons ((i-125)/4 +1)
   | i when i >= 137 && i <= 140 -> Flowers (i-136)
   | i when i >= 141 && i <= 144 -> Seasons (i-140)
   | _ -> Dots 0
