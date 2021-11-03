@@ -63,16 +63,16 @@ let shuffle_tiles (tile_stack: TileStack) =
   List.map assign_random_tags sorted 
 
 let pick_tile (player:Player.t) (tile: Tile.t) = 
-  push player.tiles tile; 
-  remove center_tiles tile; 
+  TileStack.push player.tiles tile; 
+  TileStack.pop center_tiles tile; 
 
 let steal_tile (player: Player.t) (tile : Tile.t) = 
-  push player.tiles tile;  
-  remove discared_tiles tile;
+  TileStack.push player.tiles tile;  
+  TileStack.pop discared_tiles tile;
 
 let discard_tile (player: Player.t) (tile : Tile.t) = 
-  push discarded_tiles tile; 
-  remove player.tiles tile;   
+  TileStack.push discarded_tiles tile; 
+  TileStack.pop player.tiles tile;   
 
 
 
