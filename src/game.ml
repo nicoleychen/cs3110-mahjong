@@ -25,7 +25,7 @@ let init_game (banker_id: int)= {
   banker = banker_id;
   center_tiles = init_tiles 144;
   discarded_tiles = TileStack.empty;
-  players = init_players 0
+  players = init_players 1
 }
 
 let rec assign_n_tiles (tiles : TileStack.t) (player : Player.t) (n: int): Player.t = 
@@ -87,6 +87,11 @@ let steal_tile (game : t) (player:Player.t) (tile: Tile.t) :t = {
 let discard_tile (game : t) (player:Player.t) (tile: Tile.t) :t ={
   banker = game.banker; 
   center_tiles = game.center_tiles;
+<<<<<<< HEAD
+  discarded_tiles = TileStack.push discarded_tiles tile; 
+  players = Player.remove_tile player id;
+}  
+=======
   discarded_tiles = TileStack.push tile game.discarded_tiles; 
   players = new_players game.players player tile Player.remove_tile; 
 }
@@ -106,3 +111,4 @@ let check_identical (tile1: Tile.t) (tile2: Tile.t) (tile3: Tile.t) : bool = {
 } *)
 
 
+>>>>>>> ab70c6a5331eda9b2876d8089f1b917f240c6ce0
