@@ -82,20 +82,4 @@ let discard_tile (game : t) (player:Player.t) (tile: Tile.t) (id: int) :t ={
   center_tiles = game.center_tiles;
   discarded_tiles = TileStack.push discarded_tiles tile; 
   players = Player.remove_tile player id;
-}
-
-(**hi julie*)
-
-=======
-let pick_tile (player:Player.t) (tile: Tile.t) = 
-  push player.tiles tile; 
-  remove center_tiles tile; 
->>>>>>> f06f74e8e150c7aa2594163770334dfe52a9a9c3
-
-let steal_tile (player: Player.t) (tile : Tile.t) = 
-  push player.tiles tile;  
-  remove discared_tiles tile;
-
-let discard_tile (player: Player.t) (tile : Tile.t) = 
-  push discarded_tiles tile; 
-  remove player.tiles tile;   
+}  
