@@ -15,3 +15,7 @@ val steal_tile: Player.t -> Tile.t -> 'a
 
 val discard_tile: Player.t -> Tile.t -> 'a 
 (** [discard_tile] removes a tile from the players tiles and adds it to the discarded tiles*)
+
+val check_identical: Tile.t -> Tile.t -> Tile.t -> bool
+(** [check_identical] checks if the set of three tiles is a winning combination of three identical tiles *)
+  
