@@ -1,4 +1,5 @@
 open Tile 
+open List 
 
 type t = Tile.t list 
 

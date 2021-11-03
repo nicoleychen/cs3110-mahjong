@@ -56,19 +56,23 @@ let rec filter = function
 | [] -> []
 | h :: t -> if is_flower h then filter t else h :: filter t 
 
-let shuffle_tiles tile_stack = 
-  (*assert TileStack.is_empty  = false*)
+let shuffle_tiles (tile_stack: TileStack) = 
+  assert TileStack.is_empty tile_stack = False 
   let assign_random_tags = List.map(fun c -> (Random.bits(), c)) tile_stack in 
   let sorted = List.sort compare nd in 
   List.map assign_random_tags sorted 
 
-let pick_tile tile = 
+let pick_tile (player:Player.t) (tile: Tile.t) = 
+  push player.tiles tile; 
+  remove center_tiles tile; 
+
+let steal_tile (player: Player.t) (tile : Tile.t) = 
   push player.tiles tile;  
   remove discared_tiles tile;
 
-let discard_tile tile = 
+let discard_tile (player: Player.t) (tile : Tile.t) = 
   push discarded_tiles tile; 
-  remove player.tiles tile  
+  remove player.tiles tile;   
 
 
 
