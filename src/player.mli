@@ -6,6 +6,10 @@ val init_player : int -> t
 
 val player_id: t -> int
 
+val remove_tile: t -> Tile.t -> t
+(** [remove_tile] is the new state of [player] after removing the tile with [tile_id] from their list of tiles *)
+
+
 val add_tile : t -> Tile.t -> t
 (** [add_tile] is the new state of [player] after adding [tile] to their list of tiles *)
 

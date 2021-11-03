@@ -20,3 +20,7 @@ if [s] is empty*)
 val size : t -> int 
 (** [size s] gives you the number of elements in [s] otherwise 
 it returns 0 if [s] is empty*)
+
+val remove : Tile.t -> t -> t
+(** [remove t] is all but the tile of id [t]. 
+if t is not in the tileStack, returns the unchanged tileStack *)
