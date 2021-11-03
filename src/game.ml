@@ -51,6 +51,10 @@ let game_after_init_tile_deals (game : t) : t = {
 }
 
 (* --- end of new functions added --- *)
+let remove (stack: TileStack) (id:int) = 
+  match stack with 
+  | [] -> []; 
+  | h::tl -> List.filter(fun h -> h.id = id) stack tl; 
 
 let rec filter = function
 | [] -> []
@@ -70,9 +74,10 @@ let steal_tile (player: Player.t) (tile : Tile.t) =
   TileStack.push player.tiles tile;  
   TileStack.pop discared_tiles tile;
 
-let discard_tile (player: Player.t) (tile : Tile.t) = 
+let discard_tile (player: Player.t) (tile:Tile.t) = 
   TileStack.push discarded_tiles tile; 
-  TileStack.pop player.tiles tile;   
+  (*remove specific tile*) 
+  remove player.tiles tile.id
 
 
 
