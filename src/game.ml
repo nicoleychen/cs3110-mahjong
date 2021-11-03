@@ -11,9 +11,6 @@ type t = {
     players : Player.t list;   
 }
 
-(* --- begining of new functions added ---*)
-(*TODO: add specifications for newly added functions*)
-
 let rec init_tiles (n: int) : TileStack.t = if (n > 0) then TileStack.push (Tile.return_tile n) (init_tiles (n-1)) else TileStack.empty 
 
 let rec init_players (n: int) : Player.t list = if (n <= 4) then (Player.init_player n) :: init_players (n+1) else []
@@ -49,8 +46,6 @@ let game_after_init_tile_deals (game : t) : t = {
   discarded_tiles = game.discarded_tiles;
   players = assign_tiles_to_players game.center_tiles game.players game.banker
 }
-
-(* --- end of new functions added --- *)
 
 let rec filter_flower = function
 | [] -> []
