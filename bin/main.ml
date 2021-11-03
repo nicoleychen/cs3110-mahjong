@@ -1,3 +1,4 @@
+open Demo
 open Tile
 open TileStack
 open Player

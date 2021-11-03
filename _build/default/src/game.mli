@@ -1,6 +1,8 @@
 type t 
 (** The abstract type of values representing a game *)
 
+val print_game : t -> unit
+
 val init_tiles : int -> TileStack.t
 (** [init_tiles] is a list of [n] unshuffled tiles
 Requires: n is 144 for the conventional set up*)

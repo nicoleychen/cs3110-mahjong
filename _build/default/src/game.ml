@@ -25,7 +25,7 @@ let init_game (banker_id: int)= {
   banker = banker_id;
   center_tiles = init_tiles 144;
   discarded_tiles = TileStack.empty;
-  players = init_players 0
+  players = init_players 1
 }
 
 let rec assign_n_tiles (tiles : TileStack.t) (player : Player.t) (n: int): Player.t = 

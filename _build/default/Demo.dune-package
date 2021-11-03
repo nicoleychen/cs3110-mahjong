@@ -6,6 +6,7 @@
  (archives (byte demo.cma) (native demo.cmxa))
  (plugins (byte demo.cma) (native demo.cmxs))
  (native_archives demo.a)
+ (requires yojson ANSITerminal)
  (main_module_name Demo)
  (modes byte native)
  (modules

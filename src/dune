@@ -1,3 +1,5 @@
 (library
  (name demo)
- (public_name Demo))
+ (public_name Demo)
+ (libraries yojson ANSITerminal))
+
