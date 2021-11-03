@@ -15,6 +15,18 @@ let init_player p_id = {
 
 let player_id (player: t) : int = player.id
 
+let remove (player: t) (id:int) = 
+  match stack with 
+  | [] -> []; 
+  | h::tl -> List.filter(fun h -> h.id = id) stack tl; 
+end
+
+let remove_tile (player: t) (id: int) :t = {
+  id = player.id; 
+  tiles = remove player id; 
+  score = player.score 
+}
+
 let add_tile (player : t) (tile : Tile.t) : t = {
     id = player.id;
     tiles = TileStack.push tile player.tiles;
