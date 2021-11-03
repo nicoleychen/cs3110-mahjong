@@ -16,3 +16,7 @@ let peek = function [] -> raise Empty | x :: _ -> x
 let pop = function [] -> raise Empty | _ :: s -> s 
 
 let size = List.length
+
+let remove stack (id:int) = 
+  | [] -> []; 
+  | h::tl -> List.filter(fun h -> h.id = id) stack tl; 
