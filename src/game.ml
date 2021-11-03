@@ -62,21 +62,21 @@ let shuffle_tiles (tile_stack: TileStack) =
   let sorted = List.sort compare nd in 
   List.map assign_random_tags sorted 
 
-let pick_tile (game : t) (player:Player) (tile: Tile.t): t = {
+let pick_tile (game : t) (player:Player.t) (tile: Tile.t): t = {
   banker = game.banker; 
   center_tiles = TileStack.pop center_tiles tile;  
   discarded_tiles = game.discarded_tiles; 
   players = Player.add_tile player tile; 
 } 
 
-let steal_tile (game : t) (player:Player) (tile: Tile.t) :t = {
+let steal_tile (game : t) (player:Player.t) (tile: Tile.t) :t = {
   banker = game.banker; 
   center_tiles = game.center_tiles; 
   discarded_tiles = TileStack.pop discarded_tiles tile;
   players = Player.add_tile player tile;
 }
 
-let discard_tile (game : t) (player:Player) (tile: Tile.t) (id: int) :t ={
+let discard_tile (game : t) (player:Player.t) (tile: Tile.t) (id: int) :t ={
   banker = game.banker; 
   center_tiles = game.center_tiles;
   discarded_tiles = TileStack.push discarded_tiles tile; 
