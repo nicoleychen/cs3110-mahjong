@@ -19,7 +19,6 @@
      (intf))
     ((name Game) (obj_name demo__Game) (visibility public) (impl) (intf))
     ((name Player) (obj_name demo__Player) (visibility public) (impl) (intf))
-    ((name SetUp) (obj_name demo__SetUp) (visibility public) (impl) (intf))
     ((name Tile) (obj_name demo__Tile) (visibility public) (impl) (intf))
     ((name TileStack)
      (obj_name demo__TileStack)

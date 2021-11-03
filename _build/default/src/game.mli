@@ -32,11 +32,14 @@ val shuffle_tiles : 'a list -> 'a list
 val filter_flower : Tile.t list -> Tile.t list
 (** [filter_flower] returns a list of player's tiles with the flower tiles discarded *)
 
-val pick_tile: Player.t -> Tile.t -> 'a
+val new_players : Player.t list -> Player.t -> Tile.t -> (Player.t -> Tile.t -> Player.t) -> Player.t list
+(** [new_players] returns a list of players with [player]'s tile list changed by applying f tile *)
+
+val pick_tile: t -> Player.t -> Tile.t -> t
 (**[pick_tile] removes a tile from the center tile pile and adds it to the players tiles*)
 
-val steal_tile: Player.t -> Tile.t -> 'a 
+val steal_tile: t -> Player.t -> Tile.t -> t 
 (** [steal_tile] removes a tile from the discarded pile and adds it to the players tiles*)
 
-val discard_tile: Player.t -> Tile.t -> 'a 
+val discard_tile: t -> Player.t -> Tile.t -> t
 (** [discard_tile] removes a tile from the players tiles and adds it to the discarded tiles*)
