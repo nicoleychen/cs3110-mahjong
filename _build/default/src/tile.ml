@@ -7,7 +7,7 @@ Seasons: 1=Spring, 2=Summer, 3=Autumn, 4=Winter
 *)
 
 type tile_id = int
-type category = string
+type suit = string
 type value = int
 
 type pattern =
@@ -27,7 +27,7 @@ type t = {
 let tile_id tile = tile.id
 let pattern tile = tile.pattern
 
-let category tile =
+let suit tile =
   match tile.pattern with
   | Dots _ -> "dots"
   | Bamboos _ -> "bamboos"
@@ -47,15 +47,19 @@ let value tile =
   | Flowers i ->  i
   | Seasons i ->  i
 
-let same_category tile1 tile2 = (category tile1) = (category tile2)
+let same_suit tile1 tile2 = (suit tile1) = (suit tile2)
+
+let same_suit_triple tile1 tile2 tile3 = if same_suit tile1 tile2 then same_suit tile1 tile3 && same_suit tile2 tile3 else false
 
 let same_value tile1 tile2 = (value tile1) = (value tile2)
 
-let same_pattern tile1 tile2 = if same_category tile1 tile2 then same_value tile1 tile2 else false
+let same_pattern tile1 tile2 = if same_suit tile1 tile2 then same_value tile1 tile2 else false
 
-let is_flower tile = (category tile = "flowers")
+let same_consecutive tile1 tile2 = if same_suit tile1 tile2 then ((value tile1) + 1) = (value tile2) else false
 
-let tile_to_string tile = "[" ^ string_of_int (tile_id tile) ^ "]" ^ category tile ^ " " ^ string_of_int (value tile)
+let is_flower tile = (suit tile = "flowers")
+
+let tile_to_string tile = "[" ^ string_of_int (tile_id tile) ^ "]" ^ suit tile ^ " " ^ string_of_int (value tile)
 
 let rec tiles_to_string tiles = 
   match tiles with
