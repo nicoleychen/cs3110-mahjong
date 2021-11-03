@@ -52,16 +52,17 @@ let game_after_init_tile_deals (game : t) : t = {
 
 (* --- end of new functions added --- *)
 
-let rec filter = function
+let rec filter_flower = function
 | [] -> []
 | h :: t -> if is_flower h then filter t else h :: filter t 
 
-let shuffle_tiles (tile_stack: TileStack) = 
+let shuffle_tiles (tile_stack: TileStack.t) = 
   assert TileStack.is_empty tile_stack = False 
   let assign_random_tags = List.map(fun c -> (Random.bits(), c)) tile_stack in 
   let sorted = List.sort compare nd in 
   List.map assign_random_tags sorted 
 
+<<<<<<< HEAD
 let pick_tile (game : t) (player:Player.t) (tile: Tile.t): t = {
   banker = game.banker; 
   center_tiles = TileStack.pop center_tiles tile;  
@@ -85,5 +86,16 @@ let discard_tile (game : t) (player:Player.t) (tile: Tile.t) (id: int) :t ={
 
 (**hi julie*)
 
+=======
+let pick_tile (player:Player.t) (tile: Tile.t) = 
+  push player.tiles tile; 
+  remove center_tiles tile; 
+>>>>>>> f06f74e8e150c7aa2594163770334dfe52a9a9c3
 
+let steal_tile (player: Player.t) (tile : Tile.t) = 
+  push player.tiles tile;  
+  remove discared_tiles tile;
 
+let discard_tile (player: Player.t) (tile : Tile.t) = 
+  push discarded_tiles tile; 
+  remove player.tiles tile;   
