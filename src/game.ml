@@ -11,9 +11,6 @@ type t = {
     players : Player.t list;   
 }
 
-(* --- begining of new functions added ---*)
-(*TODO: add specifications for newly added functions*)
-
 let rec init_tiles (n: int) : TileStack.t = if (n > 0) then TileStack.push (Tile.return_tile n) (init_tiles (n-1)) else TileStack.empty 
 
 let rec init_players (n: int) : Player.t list = if (n <= 4) then (Player.init_player n) :: init_players (n+1) else []
@@ -50,37 +47,41 @@ let game_after_init_tile_deals (game : t) : t = {
   players = assign_tiles_to_players game.center_tiles game.players game.banker
 }
 
-(* --- end of new functions added --- *)
-
-let rec filter = function
+let rec filter_flower = function
 | [] -> []
-| h :: t -> if is_flower h then filter t else h :: filter t 
+| h :: t -> if is_flower h then filter_flower t else h :: filter_flower t 
 
-let shuffle_tiles (tile_stack: TileStack) = 
-  assert TileStack.is_empty tile_stack = False 
+(* let shuffle_tiles (tile_stack) = 
   let assign_random_tags = List.map(fun c -> (Random.bits(), c)) tile_stack in 
-  let sorted = List.sort compare nd in 
-  List.map assign_random_tags sorted 
+  let sorted = List.sort compare assign_random_tags in 
+  List.map snd sorted  *)
 
-let pick_tile (game : t) (player:Player) (tile: Tile.t): t = {
+let rec new_players (player_list : Player.t list) (player : Player.t) (tile: Tile.t) f = 
+  match player_list with
+  | [] -> []
+  | h :: t -> if (h = player)
+    then f player tile :: t
+    else h :: new_players t player tile f
+
+let pick_tile (game : t) (player:Player.t) (tile: Tile.t): t = {
   banker = game.banker; 
-  center_tiles = TileStack.pop center_tiles tile;  
+  center_tiles = TileStack.pop game.center_tiles;  
   discarded_tiles = game.discarded_tiles; 
-  players = Player.add_tile player tile; 
+  players = new_players game.players player tile Player.add_tile; 
 } 
 
-let steal_tile (game : t) (player:Player) (tile: Tile.t) :t = {
+let steal_tile (game : t) (player:Player.t) (tile: Tile.t) :t = {
   banker = game.banker; 
   center_tiles = game.center_tiles; 
-  discarded_tiles = TileStack.pop discarded_tiles tile;
-  players = Player.add_tile player tile;
+  discarded_tiles = TileStack.pop game.discarded_tiles;
+  players = new_players game.players player tile Player.add_tile; 
 }
 
-let discard_tile (game : t) (player:Player) (tile: Tile.t) (id: int) :t ={
+let discard_tile (game : t) (player:Player.t) (tile: Tile.t) :t ={
   banker = game.banker; 
   center_tiles = game.center_tiles;
-  discarded_tiles = TileStack.push discarded_tiles tile; 
-  players = Player.remove_tile player id;
+  discarded_tiles = TileStack.push tile game.discarded_tiles; 
+  players = new_players game.players player tile Player.remove_tile; 
 }
 
 (* let check_win (game : t) (player:Player) (tile: Tile.t) :t = {

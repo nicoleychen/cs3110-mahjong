@@ -15,6 +15,12 @@ let init_player p_id = {
 
 let player_id (player: t) : int = player.id
 
+let remove_tile (player: t) (tile: Tile.t) : t = {
+  id = player.id; 
+  tiles = TileStack.remove tile player.tiles; 
+  score = player.score 
+}
+
 let add_tile (player : t) (tile : Tile.t) : t = {
     id = player.id;
     tiles = TileStack.push tile player.tiles;
