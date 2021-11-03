@@ -83,5 +83,7 @@ let discard_tile (game : t) (player:Player) (tile: Tile.t) (id: int) :t ={
   players = Player.remove_tile player id;
 }
 
+(**hi julie*)
+
 
 
