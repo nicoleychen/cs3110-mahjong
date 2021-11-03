@@ -19,7 +19,7 @@ let size = List.length
 
 let rec remove tile = function
 | [] -> []
-| h :: t -> if (h = tile) then remove tile t else h :: remove tile t
+| h :: t -> if (not (h = tile)) then h :: remove tile t else remove tile t
 
 let rec tileStack_to_string = function 
 | [] -> ""
