@@ -4,7 +4,6 @@ open TileStack
 open Player
 open Game
 
-
 let setup_game () = print_endline "Welcome to the game!"; Game.print_game (Game.set_up_game 1)
 
 let main () =
@@ -14,7 +13,12 @@ let main () =
     print_string "> ";
   match read_line () with
   | exception End_of_file -> ()
-  | answer -> if (answer = "Y") then setup_game () else print_endline "Okay, see you later!"
+  | answer -> if (answer = "Y") then setup_game else print_endline "Okay, see you later!";
+  ANSITerminal.print_string [ANSITerminal.green]
+  "Insert Player 1 Name: ";
+  match read_line () with 
+  | exception End_of_file -> ()
+  | answer -> 
 
 (* Execute the game engine. *)
 (* let () = print_endline "hi" *)
