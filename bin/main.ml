@@ -10,7 +10,7 @@ let setup_game () = print_endline "Welcome to the game!"; Game.print_game (Game.
 let main () =
   ANSITerminal.print_string [ ANSITerminal.red ]
     "\n\nWelcome to the 3110 Mahjong Game. 
-    This game requires four players, and will take around half an hour to complete.";
+    This game requires four players, and will take around half an hour to complete.\n";
     print_endline "Would you like to begin? (Y/N)\n";
     print_string "> ";
   match read_line () with
