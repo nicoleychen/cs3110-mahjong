@@ -14,3 +14,7 @@ val add_tile : t -> Tile.t -> t
 
 val get_tiles : t -> TileStack.t
 (** [get_titles] is the list of [player]'s tiles *)
+
+val player_to_string: t -> string
+
+val players_to_string: t list -> string

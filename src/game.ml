@@ -11,10 +11,12 @@ type t = {
     players : Player.t list;   
 }
 
-let print_game (game: t) = print_endline (">> Center Tiles: ");
+let print_game (game: t) = print_endline ("\n\n>> Center Tiles: ");
  print_string (TileStack.tileStack_to_string game.center_tiles);
- print_string "\n>> Discarded Tiles: ";
- print_string (TileStack.tileStack_to_string game.discarded_tiles)
+ print_string "\n\n>> Discarded Tiles: ";
+ print_string (TileStack.tileStack_to_string game.discarded_tiles);
+ print_string "\n\n>> Players: ";
+ print_string (Player.players_to_string game.players)
 
 let rec init_tiles (n: int) : TileStack.t = if (n <=144) then TileStack.push (Tile.return_tile n) (init_tiles (n+1)) else TileStack.empty 
 
