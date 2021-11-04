@@ -26,3 +26,6 @@ val remove : Tile.t -> t -> t
 if t is not in the tileStack, returns the unchanged tileStack *)
 
 val tileStack_to_string : t -> string
+
+val to_list : t -> t
+(**Changes the tileStack to a list*)
