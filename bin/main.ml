@@ -13,12 +13,7 @@ let main () =
     print_string "> ";
   match read_line () with
   | exception End_of_file -> ()
-  | answer -> if (answer = "Y") then setup_game else print_endline "Okay, see you later!";
-  ANSITerminal.print_string [ANSITerminal.green]
-  "Insert Player 1 Name: ";
-  match read_line () with 
-  | exception End_of_file -> ()
-  | answer -> 
+  | answer -> if (answer = "Y") then setup_game() else print_endline "Okay, see you later!";
 
 (* Execute the game engine. *)
 (* let () = print_endline "hi" *)
