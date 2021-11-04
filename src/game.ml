@@ -11,7 +11,8 @@ type t = {
     players : Player.t list;   
 }
 
-let print_game (game: t) = print_endline ("\n\n>> Center Tiles: ");
+let print_game (game: t) = 
+ print_endline ("\n\n>> Center Tiles: ");
  print_string (TileStack.tileStack_to_string game.center_tiles);
  print_string "\n\n>> Discarded Tiles: ";
  print_string (TileStack.tileStack_to_string game.discarded_tiles);
