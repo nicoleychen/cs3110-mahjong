@@ -28,3 +28,6 @@ if t is not in the tileStack, returns the unchanged tileStack *)
 
 val tileStack_to_string : t -> string
 (** [tileStack_to_string] is a string of a tileStack*)
+
+val to_list : t -> t
+(**Changes the tileStack to a list*)
