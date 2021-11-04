@@ -2,9 +2,10 @@ type t
 (** abstract data type to represent a stack made of tiles*)
 
 val empty : t 
-(** empty is the empty stack*)
+(** [empty] is the empty stack*)
 
 val is_empty : t -> bool
+(** [is_empty] is true when the list is empty, false otherwise*)
 
 val push : Tile.t -> t -> t
 (** [push x s] is [s] with [x] pushed on top*)
@@ -26,3 +27,7 @@ val remove : Tile.t -> t -> t
 if t is not in the tileStack, returns the unchanged tileStack *)
 
 val tileStack_to_string : t -> string
+(** [tileStack_to_string] is a string of a tileStack*)
+
+val to_list : t -> t
+(**Changes the tileStack to a list*)

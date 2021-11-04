@@ -59,5 +59,7 @@ val print_tiles: t list -> unit
 (** [print_tiles] prints a list of ids and patterns of [tiles]*)
 
 val return_pattern: tile_id -> pattern
+(** [return_pattern] is the pattern of a tile with id [i]*)
 
 val return_tile: tile_id -> t
+(** [return_pattern] is the tile with id [i]*)

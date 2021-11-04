@@ -24,3 +24,5 @@ let rec remove tile = function
 let rec tileStack_to_string = function 
 | [] -> ""
 | h::t -> Tile.tile_to_string h ^ tileStack_to_string t
+
+let to_list = Fun.id; 
