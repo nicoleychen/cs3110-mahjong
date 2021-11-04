@@ -91,8 +91,8 @@ let discard_tile (game : t) (player:Player.t) (tile: Tile.t) :t ={
   players = new_players game.players player tile Player.remove_tile; 
 }
 
-(* let check_win (game : t) (player:Player) (tile: Tile.t) :t = 
-
+(* let check_win (game : t) (player:Player) (tile: Tile.t) :string = 
+  if player.score > 0 then print_string "Player " + player.id
  *)
 
 let check_identical (tile1: Tile.t) (tile2: Tile.t) (tile3: Tile.t) : bool = 
@@ -102,6 +102,6 @@ let check_consecutive (tile1: Tile.t) (tile2: Tile.t) (tile3: Tile.t) : bool =
   if Tile.same_suit_triple tile1 tile3 tile3 then Tile.same_consecutive tile1 tile2 && Tile.same_consecutive tile2 tile3 else false
 
 (* let rec count_consecutive (tiles: TileStack.t) (count: int) : int= 
-  match tile_list with
-  |tiles.peek :: tiles[1] :: tiles[2] -> if check_consecutive tile1 tile2 tile3 then (count + 1) else count
+  match tiles with
+  |tile1 :: tile2 :: tile3 :: []-> if check_consecutive tile1 tile2 tile3 then (count + 1) else count
   |tile1 :: tile2 :: tile3 :: t -> if check_consecutive tile1 tile2 tile3 then count_consecutive  *)
