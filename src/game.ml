@@ -13,17 +13,17 @@ type t = {
 
 let print_game (game: t) = print_endline (">> Center Tiles: ");
  print_string (TileStack.tileStack_to_string game.center_tiles);
- print_string ">> Discarded Tiles: ";
+ print_string "\n>> Discarded Tiles: ";
  print_string (TileStack.tileStack_to_string game.discarded_tiles)
 
-let rec init_tiles (n: int) : TileStack.t = if (n > 0) then TileStack.push (Tile.return_tile n) (init_tiles (n-1)) else TileStack.empty 
+let rec init_tiles (n: int) : TileStack.t = if (n <=144) then TileStack.push (Tile.return_tile n) (init_tiles (n+1)) else TileStack.empty 
 
 let rec init_players (n: int) : Player.t list = if (n <= 4) then (Player.init_player n) :: init_players (n+1) else []
 
 (*TODO: modification needed -> randomize center tiles using shuffle*)
 let init_game (banker_id: int)= {
   banker = banker_id;
-  center_tiles = init_tiles 144;
+  center_tiles = init_tiles 1;
   discarded_tiles = TileStack.empty;
   players = init_players 1
 }
@@ -91,18 +91,17 @@ let discard_tile (game : t) (player:Player.t) (tile: Tile.t) :t ={
   players = new_players game.players player tile Player.remove_tile; 
 }
 
-(* let check_win (game : t) (player:Player) (tile: Tile.t) :t = {
+(* let check_win (game : t) (player:Player) (tile: Tile.t) :t = 
 
-} *)
+ *)
 
-(*
-let check_identical (tile1: Tile.t) (tile2: Tile.t) (tile3: Tile.t) : bool = {
+let check_identical (tile1: Tile.t) (tile2: Tile.t) (tile3: Tile.t) : bool = 
   if Tile.same_pattern tile1 tile2 then Tile.same_pattern tile1 tile3 && Tile.same_pattern tile2 tile3 else false
-}
-*)
 
-(* let check_consecutive (tile1: Tile.t) (tile2: Tile.t) (tile3: Tile.t) : bool = {
-  if Tile.same_suit_triple tile1 tile2 tile3 
-} *)
+let check_consecutive (tile1: Tile.t) (tile2: Tile.t) (tile3: Tile.t) : bool = 
+  if Tile.same_suit_triple tile1 tile3 tile3 then Tile.same_consecutive tile1 tile2 && Tile.same_consecutive tile2 tile3 else false
 
-
+(* let rec count_consecutive (tiles: TileStack.t) (count: int) : int= 
+  match tile_list with
+  |tiles.peek :: tiles[1] :: tiles[2] -> if check_consecutive tile1 tile2 tile3 then (count + 1) else count
+  |tile1 :: tile2 :: tile3 :: t -> if check_consecutive tile1 tile2 tile3 then count_consecutive  *)

@@ -49,7 +49,10 @@ val steal_tile: t -> Player.t -> Tile.t -> t
 val discard_tile: t -> Player.t -> Tile.t -> t
 (** [discard_tile] removes a tile from the players tiles and adds it to the discarded tiles*)
 
-(*
+
 val check_identical: Tile.t -> Tile.t -> Tile.t -> bool
 (** [check_identical] checks if the set of three tiles is a winning combination of three identical tiles *)
-*)
+
+val check_consecutive: Tile.t -> Tile.t -> Tile.t -> bool
+(** [check_consecutive] checks if the set of three tiles are consecutive. tiles should be listed in increasing 
+  value, that is, the value for tile1 < value for tile2 < value for tile3*)

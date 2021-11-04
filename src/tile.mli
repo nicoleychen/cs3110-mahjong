@@ -41,7 +41,7 @@ val same_pattern: t -> t -> bool
 (** [same_pattern] is whether the tiles [tile1] and [tile2] have the same pattern (suit and value)*)
 
 val same_consecutive: t -> t -> bool
-(** [same_consecutive] is whether the tiles [tile1] and [tile2] are consecutive or not*)
+(** [same_consecutive] is whether the tiles [tile1] and [tile2] are consecutive or not. tile1 and tile2 are listed in increasing order*)
 
 val is_flower: t -> bool
 (** [is_flower] is whether the tile [tile] has the suit of Flowers*)
