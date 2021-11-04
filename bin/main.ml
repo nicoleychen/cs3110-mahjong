@@ -9,9 +9,8 @@ let setup_game () = print_endline "Welcome to the game!"; Game.print_game (Game.
 
 let main () =
   ANSITerminal.print_string [ ANSITerminal.red ]
-    "\n\nWelcome to the 3110 Mahjong Game. 
-    This game requires four players, and will take around half an hour to complete.";
-    print_endline "Would you like to begin? (Y/N)\n";
+    "\n\nWelcome to the 3110 Mahjong Game.\nThis game requires four players, and will take around half an hour to complete.";
+    print_endline "\n\nWould you like to begin? (Y/N)";
     print_string "> ";
   match read_line () with
   | exception End_of_file -> ()
