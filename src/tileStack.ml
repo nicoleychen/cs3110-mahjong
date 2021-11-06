@@ -25,4 +25,6 @@ let rec tileStack_to_string = function
 | [] -> ""
 | h::t -> Tile.tile_to_string h ^ tileStack_to_string t
 
-let to_list = Fun.id; 
+let to_list = Fun.id
+
+let is_in_tileStack (tiles: t) (id: int) = mem (Tile.return_tile id) tiles

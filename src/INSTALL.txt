@@ -1,1 +1,1 @@
-To run our version of MS1, there is no need to download or install a program.
+To run our version of MS2, there is no need to download or install a program. In order to run the game, all that is required is to run $make play in terminal

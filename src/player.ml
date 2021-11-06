@@ -17,6 +17,8 @@ let init_player p_id = {
 
 let player_id (player: t) : int = player.id
 
+let return_player (players: t list) (id: int) : t = List.find (fun p -> (player_id p = id)) players
+
 let remove_tile (player: t) (tile: Tile.t) : t = {
   id = player.id; 
   tiles = TileStack.remove tile player.tiles; 
