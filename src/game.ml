@@ -23,6 +23,12 @@ let rec init_tiles (n: int) : TileStack.t = if (n <=144) then TileStack.push (Ti
 
 let rec init_players (n: int) : Player.t list = if (n <= 4) then (Player.init_player n) :: init_players (n+1) else []
 
+let players (game: t) : Player.t list = game.players
+
+let center_tiles (game: t) = game.center_tiles
+
+let discarded_tiles (game: t) = game.discarded_tiles
+
 (*TODO: modification needed -> randomize center tiles using shuffle*)
 let init_game (banker_id: int)= {
   banker = banker_id;
@@ -73,18 +79,18 @@ let rec new_players (player_list : Player.t list) (player : Player.t) (tile: Til
     then f player tile :: t
     else h :: new_players t player tile f
 
-let pick_tile (game : t) (player:Player.t) (tile: Tile.t): t = {
+let pick_tile (game : t) (player:Player.t): t = {
   banker = game.banker; 
   center_tiles = TileStack.pop game.center_tiles;  
   discarded_tiles = game.discarded_tiles; 
-  players = new_players game.players player tile Player.add_tile; 
+  players = new_players game.players player (TileStack.peek game.center_tiles) Player.add_tile; 
 } 
 
-let steal_tile (game : t) (player:Player.t) (tile: Tile.t) :t = {
+let steal_tile (game : t) (player:Player.t) :t = {
   banker = game.banker; 
   center_tiles = game.center_tiles; 
   discarded_tiles = TileStack.pop game.discarded_tiles;
-  players = new_players game.players player tile Player.add_tile; 
+  players = new_players game.players player (TileStack.peek game.discarded_tiles) Player.add_tile; 
 }
 
 let discard_tile (game : t) (player:Player.t) (tile: Tile.t) :t ={

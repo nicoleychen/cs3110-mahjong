@@ -11,6 +11,15 @@ val init_players : int -> Player.t list
 (** [init_players] is a list of [n] players with no tiles distirbuted*
 Requires: n is 4 for the conventional set up*)
 
+val players : t -> Player.t list
+(** [players] is the list of players in [game]*) 
+
+val center_tiles: t -> TileStack.t
+(** [center_tiles] is the list of center tiles in [game]*) 
+
+val discarded_tiles: t -> TileStack.t
+(** [discarded_tiles] is the list of discarded tiles in [game]*) 
+
 val init_game: int -> t
 (** [init_game] is a game with a player with if [banker_id] as the assigned banker, initial tiles as the center tile, empty discardd tiles, and initial players*)
 
@@ -40,10 +49,10 @@ val filter_flower : Tile.t list -> Tile.t list
 val new_players : Player.t list -> Player.t -> Tile.t -> (Player.t -> Tile.t -> Player.t) -> Player.t list
 (** [new_players] returns a list of players with [player]'s tile list changed by applying f tile *)
 
-val pick_tile: t -> Player.t -> Tile.t -> t
-(**[pick_tile] removes a tile from the center tile pile and adds it to the players tiles*)
+val pick_tile: t -> Player.t -> t
+(**[pick_tile] removes the first tile from the center tile pile and adds it to the players tiles*)
 
-val steal_tile: t -> Player.t -> Tile.t -> t 
+val steal_tile: t -> Player.t -> t 
 (** [steal_tile] removes a tile from the discarded pile and adds it to the players tiles*)
 
 val discard_tile: t -> Player.t -> Tile.t -> t

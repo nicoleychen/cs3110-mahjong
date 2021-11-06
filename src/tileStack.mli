@@ -31,3 +31,6 @@ val tileStack_to_string : t -> string
 
 val to_list : t -> t
 (**Changes the tileStack to a list*)
+
+val is_in_tileStack : t -> int -> bool
+(** [is_in_tileStack] checks if a tile with id [id] is in [tiles]*)
