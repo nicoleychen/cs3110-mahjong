@@ -61,10 +61,10 @@ let rec filter_flower = function
 | [] -> []
 | h :: t -> if is_flower h then filter_flower t else h :: filter_flower t 
 
-(* let shuffle_tiles (tile_stack) = 
-  let assign_random_tags = List.map(fun c -> (Random.bits(), c)) tile_stack in 
+(**let shuffle_tiles (tile_stack) = 
+  let assign_random_tags = List.map(fun c -> (Random.bits(), c)) tile_stack.to_list in 
   let sorted = List.sort compare assign_random_tags in 
-  List.map snd sorted  *)
+  List.map snd sorted*) 
 
 let rec new_players (player_list : Player.t list) (player : Player.t) (tile: Tile.t) f = 
   match player_list with
