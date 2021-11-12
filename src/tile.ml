@@ -24,6 +24,7 @@ type t = {
   pattern: pattern;
 }
 
+let create_tile num pat = {id = num ; pattern = pat}
 let tile_id tile = tile.id
 let pattern tile = tile.pattern
 
