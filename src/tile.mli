@@ -1,7 +1,7 @@
 type t
 (** the abstract type of values representing tiles*)
 
-type pattern
+type pattern 
 (** the abstract type of values representing patterns of tiles*)
 
 type tile_id = int
